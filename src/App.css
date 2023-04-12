@@ -1,0 +1,43 @@
+.App {
+  font-family: "Poppins", "Helvetica", "Arial", sans-serif;
+}
+
+.logo {
+  flex-grow: 1;
+}
+
+.menuItems {
+  display: flex;
+  align-items: center;
+}
+
+.MuiButton-root {
+  margin-left: 1rem;
+  max-width: 750px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.MuiButton-containedPrimary {
+  color: #000000;
+  width: 750px;
+}
+
+.MuiButton-containedSecondary {
+  color: #000000;
+}
+
+.content {
+  padding: 0rem;
+  max-width: 750px;
+  margin-left: auto;
+  margin-right: auto;
+  align-items: center;
+}
+
+.Container {
+  padding: 16px;
+  margin-left: auto;
+  margin-right: auto;
+  align-items: center;
+}
