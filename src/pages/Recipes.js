@@ -35,31 +35,14 @@ const generateRecipe = async (query) => {
 
   try {
     const response = await axios.post(
-      "https://api.openai.com/v1/chat/completions",
+      `${window.location.origin}/api/generateRecipe`,
       {
-        model: "gpt-3.5-turbo",
-        messages: [
-          {
-            role: "system",
-            content:
-              "You are a helpful chef's assistant that generates recipes based on only the given ingredients.",
-          },
-          {
-            role: "user",
-            content: query,
-          },
-        ],
-      },
-      {
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${API_KEY}`,
-        },
-        withCredentials: false,
+        query,
+        apiKey: API_KEY,
       }
     );
 
-    const generatedText = response.data.choices[0].message.content;
+    const generatedText = response.data.generatedText;
 
     if (generatedText.startsWith("Sorry")) {
       console.error(generatedText);
@@ -83,12 +66,16 @@ const Recipes = () => {
     const storedItems = localStorage.getItem("inventory");
     if (storedItems) {
       const items = JSON.parse(storedItems);
-      const parsedRecipes = await generateRecipe(
+      const result = await generateRecipe(
         `Generate unique recipes using the following ingredients: ${items.join(
           ", "
         )}`
       );
-      setRecipes(parsedRecipes);
+      if (Array.isArray(result)) {
+        setRecipes(result);
+      } else {
+        alert(result);
+      }
     } else {
       alert("No inventory items found. Please add items to your inventory.");
     }
