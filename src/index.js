@@ -4,6 +4,7 @@ import "./index.css";
 import App from "./App";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { CssBaseline } from "@mui/material";
+import axios from "axios";
 
 const theme = createTheme({
   typography: {
@@ -25,3 +26,6 @@ ReactDOM.render(
   </React.StrictMode>,
   document.getElementById("root")
 );
+
+axios.defaults.headers.post["Content-Type"] = "application/json";
+axios.defaults.headers.common["Access-Control-Allow-Origin"] = "*";

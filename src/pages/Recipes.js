@@ -42,7 +42,7 @@ const generateRecipe = async (query) => {
           {
             role: "system",
             content:
-              "You are a helpful chef's assistant that generates recipes based on given ingredients.",
+              "You are a helpful chef's assistant that generates recipes based on only the given ingredients.",
           },
           {
             role: "user",
@@ -55,6 +55,7 @@ const generateRecipe = async (query) => {
           "Content-Type": "application/json",
           Authorization: `Bearer ${API_KEY}`,
         },
+        withCredentials: false,
       }
     );
 
